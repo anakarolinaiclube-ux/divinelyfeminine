@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divinely Feminine - Liberte Sua Femme Fatale</title>
+    
+    <!-- Fontes Premium: Playfair Display (Títulos) + POPPINS (Corpo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* --- RESET & VARIÁVEIS --- */
+        :root {
+            --primary-red: #c8102e; 
+            --dark-text: #1a1a1a;
+            --light-text: #555555;
+            --gold: #f4c430;
+            --bg-light: #f9f9f9;
+            --green-check: #4CAF50;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Poppins', sans-serif; /* Alterado para Poppins */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--dark-text);
+            line-height: 1.7; /* Aumentado levemente para Poppins */
+            background-color: #fff;
+            font-weight: 400;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        
+        h1, h2, h3, .logo {
+            font-family: var(--font-serif);
+        }
+
+        /* --- UTILITÁRIOS --- */
+        .container {
+            max-width: 1100px; /* Levemente ajustado para leitura */
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .text-center { text-align: center; }
+        .mb-20 { margin-bottom: 20px; }
+        .mb-40 { margin-bottom: 40px; }
+        
+        .btn-cta {
+            background-color: var(--primary-red);
+            color: white;
+            width: 100%;
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 700; /* Poppins Bold */
+            text-transform: uppercase;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
+            font-family: var(--font-sans);
+        }
+        .btn-cta:hover { background-color: #a00d25; }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            font-weight: 500;
+        }
+        .timer { font-family: monospace; font-size: 1rem; }
+
+        /* --- HEADER --- */
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1000;
+        }
+        .nav-links { display: flex; gap: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: none; }
+        .logo { font-size: 1.8rem; color: var(--primary-red); }
+        .logo span { color: var(--dark-text); }
+        .header-icons { display: flex; gap: 20px; font-size: 1.2rem; }
+
+        /* --- HERO SECTION --- */
+        .product-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        .product-image-wrapper {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            border-radius: 5px;
+        }
+        .book-cover {
+            width: 280px;
+            height: 420px;
+            background: #111;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
+            padding: 20px;
+            border: 1px solid #333;
+        }
+        .book-cover h2 { font-size: 1.8rem; line-height: 1.2; margin-top: 20px; color: #fff; }
+        .book-cover .lips { font-size: 4rem; color: var(--primary-red); margin-bottom: 10px; }
+        .book-cover .author { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; margin-top: auto; color: #888; font-family: var(--font-sans); }
+        
+        .product-details h1 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 15px; }
+        .stars { color: var(--gold); margin-bottom: 10px; font-size: 1rem; }
+        .price-container { margin: 20px 0; display: flex; align-items: center; gap: 15px; }
+        .current-price { font-size: 1.8rem; font-weight: 700; color: var(--primary-red); }
+        .old-price { text-decoration: line-through; color: #999; font-size: 1.2rem; }
+        .save-badge { background: var(--primary-red); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; }
+        
+        .features-check li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
+
+        /* --- SECTION: INTRO PAIN (TIRED OF...) --- */
+        .pain-section {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 80px auto;
+        }
+        .pain-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        .pain-section p {
+            color: var(--light-text);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        /* --- SECTION: COMPARISON TABLE --- */
+        .comparison-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+            margin-bottom: 80px;
+        }
+        .comparison-text h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        .comparison-text p { margin-bottom: 20px; color: var(--light-text); }
+
+        .comparison-table {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .comp-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            background: #fff;
+            font-weight: 700;
+            border-bottom: 1px solid #eee;
+        }
+        .comp-header div { padding: 15px; text-align: center; }
+        .comp-header .brand-col { color: var(--dark-text); font-family: var(--font-serif); }
+        
+        .comp-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            background: #fff;
+            border-bottom: 1px solid #f5f5f5;
+            align-items: center;
+        }
+        .comp-row:last-child { border-bottom: none; }
+        .comp-feature {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 20px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+        .comp-check, .comp-cross {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            height: 100%;
+            background: #fff;
+        }
+        .comp-check { color: var(--green-check); }
+        .comp-cross { color: #111; }
+
+        /* --- SECTION: WARNING --- */
+        .warning-section {
+            background: #fff;
+            margin-bottom: 80px;
+        }
+        .warning-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .warning-icon { font-size: 2.5rem; color: #ffbd00; } /* Triângulo amarelo */
+        
+        .warning-content ul { list-style: disc; padding-left: 20px; margin: 20px 0; }
+        .warning-content li { margin-bottom: 10px; color: var(--light-text); }
+
+        /* --- SECTION: WHAT YOU'LL EXPERIENCE + STATS --- */
+        .experience-section {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            margin-bottom: 80px;
+            align-items: center;
+        }
+        .exp-list li {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .exp-icon { font-size: 1.2rem; min-width: 25px; }
+        .exp-text strong { display: block; color: var(--dark-text); font-weight: 600; margin-bottom: 5px; }
+        .exp-text { font-size: 0.95rem; color: var(--light-text); }
+
+        .stats-container { display: flex; flex-direction: column; gap: 30px; }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 20px;
+        }
+        .circle-chart {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            color: var(--primary-red);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            position: relative;
+        }
+        /* Simulando o gráfico de pizza com conic-gradient */
+        .c-91 { background: conic-gradient(var(--primary-red) 91%, #ffe5e5 0); }
+        .c-89 { background: conic-gradient(var(--primary-red) 89%, #ffe5e5 0); }
+        .c-95 { background: conic-gradient(var(--primary-red) 95%, #ffe5e5 0); }
+        
+        .circle-inner {
+            width: 58px;
+            height: 58px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        .stat-desc { font-size: 0.9rem; color: var(--light-text); line-height: 1.4; }
+
+        /* --- SECTION: BEFORE & AFTER (THE GAME) --- */
+        .game-section {
+            margin-bottom: 80px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .game-text h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .game-text p { color: var(--light-text); }
+        
+        .ba-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .ba-col { padding: 30px 20px; }
+        .ba-before { background-color: #ffdede; } /* Rosa claro */
+        .ba-after { background-color: #dcfce7; } /* Verde claro */
+        
+        .ba-header {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 5px 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .ba-list div {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .ba-before .ba-list div { text-align: right; flex-direction: row; } 
+        /* Ajuste: No print, o texto está alinhado ao centro de sua coluna e o ícone ao lado. Vamos simplificar. */
+        
+        .icon-cross { color: #ff4444; font-size: 1.1rem; margin-left: 10px; }
+        .icon-check { color: #4CAF50; font-size: 1.1rem; margin-left: 10px; }
+
+        /* --- SECTION: GUARANTEE --- */
+        .guarantee-section {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #fff;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+        .guarantee-section h2 { font-size: 2rem; margin-bottom: 20px; }
+        .guarantee-section p { margin-bottom: 20px; color: var(--light-text); }
+
+        /* --- TESTIMONIALS --- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        .review-card {
+            background: var(--bg-light);
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .quote-icon { color: var(--primary-red); font-size: 2rem; position: absolute; top: 20px; right: 20px; opacity: 0.8; }
+        .review-title { font-weight: 700; font-family: var(--font-serif); font-size: 1.1rem; margin: 15px 0; }
+        .review-body { font-size: 0.9rem; color: var(--light-text); margin-bottom: 20px; font-style: italic; }
+        .review-author { font-size: 0.85rem; text-transform: uppercase; color: #888; font-weight: 600; }
+
+        /* --- FOOTER --- */
+        footer { background: #111; color: #fff; padding: 40px; text-align: center; font-size: 0.8rem; }
+
+        /* --- RESPONSIVO --- */
+        @media (min-width: 769px) { .nav-links { display: flex; } }
+
+        @media (max-width: 768px) {
+            .product-hero, .comparison-section, .experience-section, .game-section, .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            .header { padding: 15px 20px; }
+            .product-details h1, .pain-section h2, .game-text h2 { font-size: 1.8rem; }
+            .comparison-table { overflow-x: auto; } /* Scroll na tabela se precisar */
+            .book-cover { width: 200px; height: 300px; }
+            .ba-container { grid-template-columns: 1fr; } /* Empilha antes/depois no mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <span>PROMOÇÃO DE FINAL DE ANO 🎄 62% OFF + PRESENTES</span>
+        <div class="timer">03 : 21 : 04</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-links">
+            <a href="#">Início</a>
+            <a href="#">Loja</a>
+            <a href="#">Sobre Nós</a>
+            <a href="#">Contato</a>
+        </div>
+        <div class="logo">
+            divinely<span>feminine</span>
+        </div>
+        <div class="header-icons">
+            <i class="far fa-user"></i>
+            <i class="fas fa-shopping-bag"></i>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Product / Hero Section -->
+        <section class="product-hero">
+            <div class="product-image-wrapper">
+                <div class="book-cover">
+                    <div class="author">The Bestseller</div>
+                    <div class="lips"><i class="fas fa-kiss"></i></div>
+                    <h2>UNLEASH<br>YOUR INNER<br><span style="color:var(--primary-red); font-style:italic; font-family:'Brush Script MT', cursive;">Femme Fatale</span></h2>
+                </div>
+            </div>
+
+            <div class="product-details">
+                <h1>Liberte Sua Femme Fatale Interior - Segredos Para Deixá-lo Obcecado</h1>
+                <div class="rating">
+                    <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
+                    <span style="font-size: 0.9rem; color: #555;">(6134+ Avaliações)</span>
+                </div>
+                <div class="price-container">
+                    <span class="current-price">R$ 104,61</span>
+                    <span class="old-price">R$ 275,75</span>
+                    <span class="save-badge">ECONOMIZE 62%</span>
+                </div>
+                <ul class="features-check">
+                    <li><i class="far fa-check-circle"></i> <strong>GRÁTIS:</strong> Workbook de Transformação de 30 Dias</li>
+                    <li><i class="far fa-check-circle"></i> Baseado na comprovada <strong>Psicologia da Atração</strong></li>
+                    <li><i class="far fa-check-circle"></i> Garantia de Reembolso de 30 Dias</li>
+                </ul>
+                <button class="btn-cta">ADICIONAR AO CARRINHO</button>
+            </div>
+        </section>
+
+        <!-- 1. PAIN SECTION (Tired of...) -->
+        <section class="pain-section">
+            <h2>Cansada de levar vácuo, ser ignorada ou tratada como opção? Descubra os segredos que fazem ele correr atrás, assumir e ficar obcecado.</h2>
+            <p>Isso não é sobre aparência ou implorar por atenção, é sobre psicologia, energia e gatilhos aos quais os homens não conseguem resistir. Aqui dentro, você aprenderá exatamente como virar o jogo e deixá-lo viciado em você.</p>
+            <p>A maioria das mulheres corre atrás, investe demais e acaba afastando os homens. Essas estratégias invertem a dinâmica de poder usando gatilhos psicológicos comprovados como escassez, ancoragem emocional e loops de obsessão. É por isso que até os "players indisponíveis" acabam fisgados.</p>
+        </section>
+
+        <!-- 2. COMPARISON TABLE (Why It Works) -->
+        <section class="comparison-section">
+            <div class="comparison-text">
+                <h2>Por Que Funciona Quando Outros Falham</h2>
+                <p>A atração não é sobre dizer a coisa certa... é sobre <strong>acionar o instinto certo</strong>. Dizem para nós "apenas se ame" ou "seja paciente". Mas se isso funcionasse, você não estaria aqui.</p>
+                <p>O que torna isso diferente é que é construído sobre <strong>gatilhos de atração psicológica</strong>, as mesmas forças ocultas que deixam os homens viciados em perseguir mulheres que eles não conseguem decifrar. Uma vez que você entenda isso, nunca mais perderá tempo com conselhos ruins.</p>
+            </div>
+            
+            <div class="comparison-table">
+                <div class="comp-header">
+                    <div></div> <!-- Célula vazia -->
+                    <div class="brand-col">Divinely<br>Feminine</div>
+                    <div style="color:#888;">Outros</div>
+                </div>
+                <!-- Linha 1 -->
+                <div class="comp-row">
+                    <div class="comp-feature">Baseado em psicologia e trabalho energético</div>
+                    <div class="comp-check"><i class="fas fa-check"></i></div>
+                    <div class="comp-cross"><i class="fas fa-times"></i></div>
+                </div>
+                <!-- Linha 2 -->
+                <div class="comp-row">
+                    <div class="comp-feature">Ensina obsessão vitalícia, não joguinhos</div>
+                    <div class="comp-check"><i class="fas fa-check"></i></div>
+                    <div class="comp-cross"><i class="fas fa-times"></i></div>
+                </div>
+                <!-- Linha 3 -->
+                <div class="comp-row">
+                    <div class="comp-feature">Funciona com ex, cafajestes e distantes</div>
+                    <div class="comp-check"><i class="fas fa-check"></i></div>
+                    <div class="comp-cross"><i class="fas fa-times"></i></div>
+                </div>
+                <!-- Linha 4 -->
+                <div class="comp-row">
+                    <div class="comp-feature">Rápido, acionável e empoderador</div>
+                    <div class="comp-check"><i class="fas fa-check"></i></div>
+                    <div class="comp-cross"><i class="fas fa-times"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. WARNING SECTION -->
+        <section class="warning-section">
+            <div class="warning-title">
+                <span class="warning-icon"><i class="fas fa-exclamation-triangle"></i></span>
+                Aviso: Isso Não É Para Todo Mundo
+            </div>
+            <div class="warning-content">
+                <strong>Isso NÃO é para mulheres que querem correr atrás, provar seu valor ou implorar por amor.</strong>
+                <p style="margin-top:10px;">Se você está ok em ficar esperando e torcendo para que ele magicamente mude, não compre isso.</p>
+                <p>Aqui dentro estão <strong>gatilhos psicológicos</strong> que mudam como os homens te veem para sempre.</p>
+                <ul>
+                    <li>Você enxergará através de vácuos, desculpas e sinais mistos instantaneamente.</li>
+                    <li>Você saberá exatamente como transformar a indiferença dele em perseguição.</li>
+                    <li>Você sentirá a mudança de ser <em>perseguida, priorizada e adorada</em> ao invés de ignorada.</li>
+                </ul>
+                <p>Mas se você cansou de brincar de terapeuta, consertadora ou estepe e está pronta para ser conquistada... isso foi escrito <em>para você</em>.</p>
+            </div>
+        </section>
+
+        <!-- 4. EXPERIENCE & STATS -->
+        <section class="experience-section">
+            <div class="exp-left">
+                <h2 style="font-family:var(--font-serif); font-size: 2.2rem; margin-bottom:30px;">O Que Você Vai Vivenciar</h2>
+                <ul class="exp-list">
+                    <li>
+                        <span class="exp-icon">✨</span>
+                        <div class="exp-text"><strong>Aquela mudança instantânea</strong> quando você finalmente entende <strong>por que ele se afastou</strong> - e como fazê-lo se aproximar.</div>
+                    </li>
+                    <li>
+                        <span class="exp-icon">📱</span>
+                        <div class="exp-text"><strong>A emoção</strong> do nome dele iluminando seu celular - <em>dessa vez</em> com mensagens duplas e planos reais.</div>
+                    </li>
+                    <li>
+                        <span class="exp-icon">👑</span>
+                        <div class="exp-text"><strong>A certeza silenciosa</strong> de que você consegue lidar com qualquer homem - os galinhas, os indecisos, até aqueles que dizem "não querer nada sério".</div>
+                    </li>
+                    <li>
+                        <span class="exp-icon">🔥</span>
+                        <div class="exp-text"><strong>O poder inegável</strong> de vê-lo se esforçar - cancelando outros planos e tratando você como a <strong>única mulher que importa</strong>.</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="circle-chart c-91"><div class="circle-inner">91%</div></div>
+                    <div class="stat-desc">notaram homens mandando mensagem/ligando mais vezes nos primeiros 7 dias</div>
+                </div>
+                <div class="stat-item">
+                    <div class="circle-chart c-89"><div class="circle-inner">89%</div></div>
+                    <div class="stat-desc">disseram que sua confiança aumentou instantaneamente após aplicar apenas uma das mudanças psicológicas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="circle-chart c-95"><div class="circle-inner">95%</div></div>
+                    <div class="stat-desc">sentiram que finalmente tinham o "controle da situação" nos encontros ao invés de correr atrás</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. BEFORE & AFTER (The Game) -->
+        <section class="game-section">
+            <div class="game-text">
+                <h2>Quando Você Aprende o Jogo... Você Para de Jogar</h2>
+                <p>Essa é a diferença entre torcer para que ele mande mensagem... e assistir ele correndo atrás.</p>
+            </div>
+            
+            <div class="ba-container">
+                <!-- Coluna Antes -->
+                <div class="ba-col ba-before">
+                    <div class="text-center">
+                        <span class="ba-header">Antes de Ler</span>
+                    </div>
+                    <div class="ba-list">
+                        <div>Esperando horas pela resposta dele <i class="fas fa-times-circle icon-cross"></i></div>
+                        <div>Checando se você falou "demais" <i class="fas fa-times-circle icon-cross"></i></div>
+                        <div>Entrando em pânico quando ele se afasta <i class="fas fa-times-circle icon-cross"></i></div>
+                        <div>Se sentindo como uma opção <i class="fas fa-times-circle icon-cross"></i></div>
+                        <div>Esperando que ele veja seu valor <i class="fas fa-times-circle icon-cross"></i></div>
+                    </div>
+                </div>
+                <!-- Coluna Depois -->
+                <div class="ba-col ba-after">
+                    <div class="text-center">
+                        <span class="ba-header">Depois de Ler</span>
+                    </div>
+                    <div class="ba-list">
+                        <div>Vê-lo insistindo quando você fica quieta <i class="fas fa-check-circle icon-check"></i></div>
+                        <div>Saber que suas palavras ficam na mente dele <i class="fas fa-check-circle icon-check"></i></div>
+                        <div>Sorrir, sabendo que ele sempre volta mais forte <i class="fas fa-check-circle icon-check"></i></div>
+                        <div>Ser tratada como a escolha final <i class="fas fa-check-circle icon-check"></i></div>
+                        <div>Vê-lo lutar para provar o valor dele pra você <i class="fas fa-check-circle icon-check"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. GUARANTEE SECTION -->
+        <section class="guarantee-section">
+            <h2>Teste por 30 dias. Se você não notar ele mandando mensagem primeiro, correndo mais atrás e te tratando diferente... você recebe cada centavo de volta. Sem jogos, sem burocracia.</h2>
+            <p>Estamos tão confiantes que <em>Liberte Sua Femme Fatale Interior</em> transformará a maneira como os homens respondem a você que estamos te dando <strong>30 dias completos para colocar em prática</strong>.</p>
+            <p>Se depois de fazer o trabalho você não sentir uma mudança notável na sua confiança, presença e na forma como os homens engajam com você, simplesmente nos avise e emitiremos um reembolso total.</p>
+            <p>Milhares de mulheres já desbloquearam sua energia Femme Fatale, agora é a sua vez de assumir a sua.</p>
+        </section>
+
+        <!-- TESTIMONIALS (Mantido do anterior) -->
+        <section class="testimonials-section text-center">
+            <h2 style="font-family:var(--font-serif); font-size:2.5rem; margin-bottom:40px;">Resultados Reais</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="review-title">Ele não parava de mandar mensagem e eu mal disse uma palavra.</div>
+                    <div class="review-body">"Aquele mesmo cara que demorava dias para responder? Agora ele está lotando meu celular, me chamando de 'misteriosa' e dizendo que não consegue parar de pensar em mim."</div>
+                    <div class="review-author">Sofia R.</div>
+                </div>
+                <div class="review-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="review-title">Finalmente parei de implorar por amor.</div>
+                    <div class="review-body">"Ensina a se desprender emocionalmente e assumir seu poder. Em semanas, ele começou a me tratar diferente e disse que tinha medo de me perder."</div>
+                    <div class="review-author">Danielle M.</div>
+                </div>
+                <div class="review-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="review-title">Isso virou uma chave na minha cabeça.</div>
+                    <div class="review-body">"Parei de tentar 'merecer' amor e comecei a irradiar confiança. Minha postura mudou, e tudo em mim começou a atrair atenção em todas as áreas da vida."</div>
+                    <div class="review-author">Brielle C.</div>
+                </div>
+            </div>
+            <button class="btn-cta" style="max-width: 500px;">DESBLOQUEIE OS SEGREDOS AGORA</button>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Divinely Feminine. Todos os direitos reservados.</p>
+        <p style="margin-top: 10px; color: #555;">Termos de Serviço | Política de Privacidade</p>
+    </footer>
+
+</body>
+</html>
