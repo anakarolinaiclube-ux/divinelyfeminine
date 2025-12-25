@@ -2,13 +2,12 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Divinely Feminine - Liberte Sua Femme Fatale</title>
     
     <!-- Importando Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Playfair (Apenas para o Título Principal) e Poppins (Para todo o resto) -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Ícones -->
@@ -21,18 +20,13 @@
             --dark-text: #1a1a1a;
             --light-text: #555555;
             --gold: #f4c430;
-            
-            /* Backgrounds Estáticos e Elegantes */
             --bg-white: #ffffff;
-            --bg-blush: #fff5f6; /* Rosa muito pálido */
+            --bg-blush: #fff5f6;
             --bg-offwhite: #fcfcfc;
             --bg-contrast: #f8f9fa;
-            
             --green-check: #4CAF50;
-            
-            /* Definição de Fontes */
-            --font-serif: 'Playfair Display', serif; /* Apenas para H1 Hero */
-            --font-main: 'Poppins', sans-serif; /* Para todo o resto */
+            --font-serif: 'Playfair Display', serif;
+            --font-main: 'Poppins', sans-serif;
         }
 
         * {
@@ -41,33 +35,38 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            width: 100%;
+            overflow-x: hidden; /* Trava a rolagem horizontal */
+            position: relative;
+        }
+
         body {
-            font-family: var(--font-main); /* Poppins global */
+            font-family: var(--font-main);
             color: var(--dark-text);
             line-height: 1.6;
             background-color: var(--bg-white);
             font-weight: 400;
-            overflow-x: hidden;
         }
 
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
         img { max-width: 100%; height: auto; }
         
-        /* Forçar Poppins em quase tudo */
         h2, h3, h4, h5, h6, p, span, li, button, .logo {
             font-family: var(--font-main);
         }
 
-        /* --- ANIMAÇÃO DE ONDAS (AUMENTADA) --- */
+        /* --- ANIMAÇÃO DE ONDAS --- */
         @keyframes wave-motion {
             0% { transform: translateX(0) scaleY(1); }
-            50% { transform: translateX(-30px) scaleY(1.35); } /* Movimento maior */
+            50% { transform: translateX(-20px) scaleY(1.2); } /* Reduzi levemente o X para evitar glitch no mobile */
             100% { transform: translateX(0) scaleY(1); }
         }
 
         /* --- UTILITÁRIOS --- */
         .container {
+            width: 100%; /* Mudado de max-width fixo para fluido */
             max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
@@ -88,20 +87,18 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background 0.3s; /* Sem movimento, apenas cor */
+            transition: background 0.3s;
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
             font-family: var(--font-main);
         }
-        .btn-cta:hover { 
-            background-color: #a00d25; 
-        }
+        .btn-cta:hover { background-color: #a00d25; }
 
-        /* --- WAVE DIVIDERS --- */
+        /* --- WAVE DIVIDERS (CORRIGIDO PARA MOBILE) --- */
         .wave-divider {
             position: absolute;
-            left: 0;
-            width: 120%; /* Largura maior para permitir movimento lateral sem cortar */
+            left: -10%; /* Começa antes da tela para permitir movimento */
+            width: 120%; /* Garante cobertura extra */
             overflow: hidden;
             line-height: 0;
             z-index: 1;
@@ -110,14 +107,13 @@
         .wave-divider svg {
             display: block;
             width: 100%;
-            height: 70px; /* Onda mais alta */
+            height: 70px;
             transform-origin: bottom center;
-            animation: wave-motion 6s ease-in-out infinite; /* Animação mais rápida e visível */
+            animation: wave-motion 6s ease-in-out infinite;
         }
         .wave-bottom { bottom: -1px; transform: rotate(180deg); }
         .wave-top { top: -1px; }
         
-        /* Cores de preenchimento das ondas para combinar com as seções */
         .fill-blush { fill: var(--bg-blush); }
         .fill-contrast { fill: var(--bg-contrast); }
         .fill-white { fill: #ffffff; }
@@ -150,8 +146,9 @@
             top: 0;
             background: rgba(255,255,255,0.98);
             z-index: 1000;
+            width: 100%;
         }
-        .nav-links { display: flex; gap: 20px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; display: none; font-weight: 500; }
+        .nav-links { display: none; gap: 20px; font-size: 0.85rem; text-transform: uppercase; font-weight: 500; }
         .logo { font-size: 1.4rem; color: var(--primary-red); font-weight: 700; letter-spacing: -0.5px; }
         .logo span { color: var(--dark-text); font-weight: 400; }
         .header-icons { display: flex; gap: 15px; font-size: 1.1rem; }
@@ -163,7 +160,7 @@
             gap: 40px;
             margin-bottom: 60px;
             align-items: center;
-            background: radial-gradient(circle at center, #fff 0%, #fafafa 100%); /* Fundo estático */
+            background: radial-gradient(circle at center, #fff 0%, #fafafa 100%);
         }
         .product-image-wrapper {
             display: flex;
@@ -181,7 +178,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            box-shadow: 10px 10px 30px rgba(0,0,0,0.25); /* Sombra estática */
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.25);
             padding: 20px;
             border: 1px solid #333;
         }
@@ -190,7 +187,6 @@
         .book-cover .author { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-top: auto; color: #888; }
         
         .product-details h1 { 
-            /* ÚNICA EXCEÇÃO: TÍTULO PRINCIPAL EM SERIF */
             font-family: var(--font-serif); 
             font-size: 2.4rem; 
             line-height: 1.2; 
@@ -210,9 +206,10 @@
         /* --- 1. PAIN SECTION WRAPPER --- */
         .pain-section-wrapper {
             position: relative;
-            background-color: var(--bg-blush); /* Fundo estático */
+            background-color: var(--bg-blush);
             padding: 80px 0;
             margin-bottom: 60px;
+            width: 100%;
         }
         .pain-section {
             text-align: center;
@@ -241,6 +238,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            width: 100%;
         }
         .comp-header {
             display: grid;
@@ -282,9 +280,10 @@
 
         /* --- 3. WARNING SECTION --- */
         .warning-wrapper {
-            background: #fffbf2; /* Amarelo muito pálido estático */
+            background: #fffbf2;
             border-left: 4px solid #ffbd00;
             margin-bottom: 80px;
+            width: 100%;
         }
         .warning-section { padding: 40px; }
         .warning-title {
@@ -302,10 +301,11 @@
         /* --- 4. EXPERIENCE SECTION WRAPPER --- */
         .experience-wrapper {
             position: relative;
-            background-color: var(--bg-contrast); /* Fundo estático */
+            background-color: var(--bg-contrast);
             padding-top: 80px;
             padding-bottom: 60px;
             margin-bottom: 60px;
+            width: 100%;
         }
         .experience-section {
             display: grid;
@@ -395,7 +395,7 @@
         .guarantee-section p { margin-bottom: 20px; color: var(--light-text); font-size: 0.95rem; }
 
         /* --- TESTIMONIALS --- */
-        .testimonials-wrapper { background-color: #fff; padding-bottom: 80px; }
+        .testimonials-wrapper { background-color: #fff; padding-bottom: 80px; width: 100%; }
         .reviews-grid {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 50px;
         }
@@ -409,58 +409,55 @@
         .review-author { font-size: 0.75rem; text-transform: uppercase; color: #888; font-weight: 700; letter-spacing: 1px; }
 
         /* --- FOOTER --- */
-        .footer-wrapper { position: relative; margin-top: 50px; }
+        .footer-wrapper { position: relative; margin-top: 50px; width: 100%; }
         .footer-wave svg {
-            animation: wave-motion 8s ease-in-out infinite reverse; /* Animação inversa no footer */
+            animation: wave-motion 8s ease-in-out infinite reverse;
         }
         footer { 
             background: #111; color: #fff; padding: 60px 20px 40px 20px; 
             text-align: center; font-size: 0.8rem; position: relative; z-index: 2;
         }
 
-        /* --- RESPONSIVIDADE MOBILE OTIMIZADA --- */
+        /* --- RESPONSIVIDADE MOBILE --- */
         @media (min-width: 769px) { .nav-links { display: flex; } }
 
         @media (max-width: 768px) {
-            /* Ajustes Gerais */
-            .container { padding: 30px 15px; }
+            .container { padding: 30px 20px; }
             
-            /* Títulos Ajustados para não quebrar */
-            .product-details h1 { font-size: 1.8rem; line-height: 1.3; } /* Hero Title */
-            h2 { font-size: 1.5rem !important; line-height: 1.3; } /* Section Titles */
+            .product-details h1 { font-size: 1.8rem; line-height: 1.3; } 
+            h2 { font-size: 1.5rem !important; line-height: 1.3; }
             
-            /* Grids em coluna única */
             .product-hero, .comparison-section, .experience-section, .game-section, .reviews-grid {
                 grid-template-columns: 1fr; 
                 gap: 35px;
             }
             
-            /* Ajustes Hero */
             .product-hero { text-align: center; }
             .product-image-wrapper { padding: 0; }
             .book-cover { width: 220px; height: 330px; margin: 0 auto; }
             .price-container { justify-content: center; }
-            .features-check { display: inline-block; text-align: left; } /* Centraliza bloco, mas alinha texto */
+            .features-check { display: inline-block; text-align: left; }
             
-            /* Ajustes Tabela Comparação */
-            .comparison-table { overflow-x: auto; display: block; width: 100%; }
-            .comp-header, .comp-row { min-width: 500px; } /* Garante que a tabela não esmague */
+            /* Correção Scroll Horizontal na Tabela */
+            .comparison-table { 
+                overflow-x: auto; 
+                display: block; 
+                width: 100%; 
+                -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+            }
+            .comp-header, .comp-row { min-width: 500px; } 
             
-            /* Ajustes Aviso */
             .warning-section { padding: 25px 15px; }
             .warning-title { font-size: 1.4rem; justify-content: center; text-align: center; }
             
-            /* Ajustes Antes/Depois */
             .ba-container { grid-template-columns: 1fr; }
             
-            /* Ajustes Prova Social */
             .reviews-grid { gap: 15px; }
             
-            /* Texto base reduzido levemente */
             p, li { font-size: 0.9rem !important; }
         }
 
-        /* Mobile Pequeno (celulares estreitos) */
+        /* Mobile Pequeno */
         @media (max-width: 480px) {
             .product-details h1 { font-size: 1.6rem; }
             h2 { font-size: 1.35rem !important; }
@@ -497,7 +494,6 @@
             </div>
 
             <div class="product-details">
-                <!-- Título mantido em Serif (Playfair) -->
                 <h1>Liberte Sua Femme Fatale Interior - Segredos Para Deixá-lo Obcecado</h1>
                 
                 <div class="rating text-center-mobile">
@@ -521,7 +517,7 @@
         </section>
     </div>
 
-    <!-- Pain Section: Onda Topo + Fundo Rosa + Onda Base -->
+    <!-- Pain Section -->
     <div class="pain-section-wrapper">
         <div class="wave-divider wave-top">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
