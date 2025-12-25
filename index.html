@@ -37,7 +37,7 @@
 
         html, body {
             width: 100%;
-            overflow-x: hidden; /* Trava a rolagem horizontal */
+            overflow-x: hidden;
             position: relative;
         }
 
@@ -60,13 +60,13 @@
         /* --- ANIMAÇÃO DE ONDAS --- */
         @keyframes wave-motion {
             0% { transform: translateX(0) scaleY(1); }
-            50% { transform: translateX(-20px) scaleY(1.2); } /* Reduzi levemente o X para evitar glitch no mobile */
+            50% { transform: translateX(-20px) scaleY(1.2); }
             100% { transform: translateX(0) scaleY(1); }
         }
 
         /* --- UTILITÁRIOS --- */
         .container {
-            width: 100%; /* Mudado de max-width fixo para fluido */
+            width: 100%;
             max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
@@ -75,7 +75,6 @@
         }
         .text-center { text-align: center; }
         
-        /* Botão */
         .btn-cta {
             background-color: var(--primary-red);
             color: white;
@@ -94,11 +93,11 @@
         }
         .btn-cta:hover { background-color: #a00d25; }
 
-        /* --- WAVE DIVIDERS (CORRIGIDO PARA MOBILE) --- */
+        /* --- WAVE DIVIDERS --- */
         .wave-divider {
             position: absolute;
-            left: -10%; /* Começa antes da tela para permitir movimento */
-            width: 120%; /* Garante cobertura extra */
+            left: -10%;
+            width: 120%;
             overflow: hidden;
             line-height: 0;
             z-index: 1;
@@ -203,11 +202,11 @@
         .features-check li { margin-bottom: 8px; display: flex; align-items: start; gap: 10px; font-size: 0.9rem; }
         .features-check i { margin-top: 5px; color: var(--dark-text); font-size: 0.8rem; }
 
-        /* --- 1. PAIN SECTION WRAPPER --- */
+        /* --- 1. PAIN SECTION WRAPPER (AJUSTADO) --- */
         .pain-section-wrapper {
             position: relative;
             background-color: var(--bg-blush);
-            padding: 80px 0;
+            padding: 50px 0; /* Reduzido de 80px para 50px */
             margin-bottom: 60px;
             width: 100%;
         }
@@ -218,8 +217,16 @@
             position: relative;
             z-index: 2;
         }
-        .pain-section h2 { font-size: 2rem; margin-bottom: 20px; font-weight: 600; }
-        .pain-section p { color: var(--light-text); margin-bottom: 20px; font-size: 1rem; }
+        .pain-section h2 { 
+            font-size: 2rem; 
+            margin-bottom: 10px; /* Reduzido o espaço abaixo do título */
+            font-weight: 600; 
+        }
+        .pain-section p { 
+            color: var(--light-text); 
+            margin-bottom: 15px; /* Reduzido o espaço entre parágrafos */
+            font-size: 1rem; 
+        }
 
         /* --- 2. COMPARISON TABLE --- */
         .comparison-section {
@@ -438,12 +445,11 @@
             .price-container { justify-content: center; }
             .features-check { display: inline-block; text-align: left; }
             
-            /* Correção Scroll Horizontal na Tabela */
             .comparison-table { 
                 overflow-x: auto; 
                 display: block; 
                 width: 100%; 
-                -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+                -webkit-overflow-scrolling: touch;
             }
             .comp-header, .comp-row { min-width: 500px; } 
             
@@ -457,7 +463,6 @@
             p, li { font-size: 0.9rem !important; }
         }
 
-        /* Mobile Pequeno */
         @media (max-width: 480px) {
             .product-details h1 { font-size: 1.6rem; }
             h2 { font-size: 1.35rem !important; }
